@@ -1,0 +1,296 @@
+itens bd
+1-nome
+2- email
+3- senha
+4-tel
+5-sexo
+6-data nsac
+7-estado
+8-cidade
+9-endereço.
+
+<?php
+// Dados de conexão com o banco de dados
+$host = 'localhost'; // Host do banco de dados
+$user = 'seu_usuario'; // Usuário do banco de dados
+$pass = 'sua_senha'; // Senha do banco de dados
+$dbname = 'nome_do_banco'; // Nome do banco de dados
+
+// Conectar ao banco de dados usando PDO
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+    // Configurar o PDO para lançar exceções em caso de erro
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Exibe uma mensagem de sucesso opcional
+    // echo "Conexão com o banco de dados realizada com sucesso!";
+} catch (PDOException $e) {
+    // Caso haja erro na conexão, exibe a mensagem e termina a execução
+    die("Erro ao conectar ao banco de dados: " . $e->getMessage());
+}
+?>
+
+nome bd=  bd_cadasdtromyself
+nome tab = tab_cad_myself
+--- toda vez que inicio uma sessão devi iniciar a mesmo com u sessão_ start
+
+
+
+--------------------------------------------------------------------------------
+codigo original
+<?php
+/*session_start();
+print_r($_SESSION);
+
+if ((!isset($_SESSION['email'])== true and (!isset($_SESSION['senha'])== true ))) {
+   
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    header('Location: pg_upload.html');
+}
+$logado = $_SESSION['email'];
+*/
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema up_load</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="up">
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="imagem/lentecmr.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    MySelf.PICS
+                </a>
+            </div> <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+
+</body>
+
+</html>
+
+
+
+teste pg individual Sistema..
+<?php
+session_start();
+print_r($_SESSION);
+
+// Verifica se o usuário está logado
+if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
+    // Se não estiver logado, destrói as variáveis da sessão e redireciona para a página de login
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    header('Location: pg_upload.html');
+    exit();
+}
+
+// Armazena o email do usuário logado
+$logado = $_SESSION['email'];
+
+// Verifica se o formulário de upload foi enviado
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Email do usuário logado
+    $email = $_SESSION['email'];
+    
+    // Sanitiza o email para evitar problemas com diretórios
+    $email_sanitized = str_replace('@', '_at_', str_replace('.', '_dot_', $email));
+
+    // Define o diretório de upload exclusivo para o usuário
+    $target_dir = "uploads/" . $email_sanitized . "/";
+
+    // Cria o diretório se ele não existir
+    if (!is_dir($target_dir)) {
+        mkdir($target_dir, 0777, true);
+    }
+
+    // Define o caminho completo do arquivo
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+    // Move o arquivo enviado para o diretório do usuário
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // Conexão com o banco de dados (ajuste conforme a sua configuração)
+        $conn = new mysqli('localhost', 'root', '', 'seu_banco_de_dados');
+        
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+
+        // Insere o caminho da imagem no banco de dados
+        $query = "INSERT INTO imagens (email, image_path) VALUES (?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('ss', $email, $target_file);
+        $stmt->execute();
+        
+        echo "Upload realizado com sucesso!";
+    } else {
+        echo "Erro ao fazer upload.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema up_load</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="up">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="imagem/lentecmr.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    MySelf.PICS
+                </a>
+            </div> 
+            <span class="navbar-toggler-icon"></span>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Formulário de Upload de Imagem -->
+    <div class="container mt-5">
+        <h1>Faça o upload da sua imagem</h1>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            Selecione a imagem:
+            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control mb-3">
+            <input type="submit" value="Upload de Imagem" name="submit" class="btn btn-primary">
+        </form>
+    </div>
+
+</body>
+
+</html>
+---------------------------------------------
+
+<?php
+session_start();
+
+// Verifica se o usuário está logado
+if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    header('Location: pg_upload.html');  // Redireciona se não estiver logado
+    exit();
+}
+
+// Armazena o email do usuário logado
+$email = $_SESSION['email'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Sanitiza o email para criar um diretório exclusivo
+    $email_sanitized = str_replace('@', '_at_', str_replace('.', '_dot_', $email));
+    
+    // Define o diretório de upload
+    $target_dir = "uploads/" . $email_sanitized . "/";
+
+    // Cria o diretório se não existir
+    if (!is_dir($target_dir)) {
+        mkdir($target_dir, 0777, true);
+    }
+
+    // Caminho completo do arquivo
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+    // Verifica se o arquivo foi enviado
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // Conexão com o banco de dados
+        $conn = new mysqli('localhost', 'root', '', 'seu_banco_de_dados');
+
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+
+        // Insere o caminho da imagem e o email no banco de dados
+        $query = "INSERT INTO imagens (email, image_path) VALUES (?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('ss', $email, $target_file);
+        $stmt->execute();
+
+        echo "Upload realizado com sucesso!";
+    } else {
+        echo "Erro ao fazer upload.";
+    }
+}
+?>
+

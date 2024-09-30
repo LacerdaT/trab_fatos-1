@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login MySelf</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="up">
+
+    <a href="pg_abertura.html"><button id="bt1" class="btn btn-primary mb-2">volta</button></a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="tlogin border p-4 rounded shadow mx-auto" style="max-width: 400px;">
+        <br>
+        <h1>MySelf.PICS</h1>
+        <br>
+        <h2>Login</h2>
+        <form action="verifica_bdLogin.php" method="POST">
+            <input type="email" name="email" class="form-control mb-3" placeholder="Email">
+            <input type="password" name="senha" class="form-control mb-3" placeholder="Senha">
+            <div class="d-grid gap-2">
+                <input type="submit" name="submit" value="Entrar" id="enter">
+                <a href="for_cadastro.php" id="cadastro" class="btn btn-secondary">Criar Conta</a>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

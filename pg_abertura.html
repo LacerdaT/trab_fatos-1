@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySelf</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS para o layout da página */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* Faz o main ocupar o espaço disponível */
+        }
+
+    </style>
+</head>
+
+<body class="up">
+    <header class="cab text-white text-center py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-3 text-center text-md-left logo-container">
+                    <img src="imagem/lentecmr.png" alt="Logo da Empresa" class="img-fluid">
+                </div>
+
+               
+                    <h1>MySelf.PICS</h1>
+                
+            </div>
+        </div>
+    </header>
+
+    <nav class="cab navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center text-md-right buttons-container" id="bt">
+                    <a href="pg_login.html">
+                        <button class="btn2 mr-2">Login</button>
+                    </a>
+                    <a href="for_cadastro.php">
+                        <button class="btn2">Cadastro</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container my-5">
+        <div class="row">
+            <!-- Texto -->
+            <div class="col-md-8 col-sm-12" id="Bem-vindo">
+                <h1 id="h1ab">Bem-vindo!</h1><br><br>
+    
+                <p id="fonte">No MySelf.PICS, cada foto e cada música são partes valiosas da sua história.
+                    <strong>Armazene suas recordações</strong> de forma segura e acessível, garantindo que os momentos
+                    mais preciosos da sua vida nunca se percam.
+                </p>
+                
+                <ul id="fonte">
+                    <li>Guarde suas melhores memórias: Faça upload de fotos e músicas que contam a sua história.</li>
+                    <li>Reviva momentos especiais: Organize e compartilhe suas recordações com amigos e familiares.</li>
+                    <li>Acesse tudo a qualquer hora: Mantenha suas memórias sempre à mão, prontas para serem revisitadas.</li>
+                </ul>
+                
+                <p id="fonte"><strong>A vida é feita de momentos. Não deixe que eles se apaguem.</strong> Comece agora a preservar suas histórias no
+                    MySelf.PICS!</p>
+                
+            </div>
+    
+            <!-- Carousel de Imagens -->
+            <div class="col-md-4 col-sm-12 d-none d-md-block" id="carousel">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="imagem/f1.jpg" class="d-block w-100" alt="Imagem 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="imagem/f2.jpg" class="d-block w-100" alt="Imagem 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="imagem/f3.jpg" class="d-block w-100" alt="Imagem 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="imagem/f5.jpg" class="d-block w-100" alt="Imagem 4">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+  ... <!-- Conteúdo da página -->
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+    
+    <!-- Rodapé -->
+     
+    <footer class=" text-center py-4" id="roda">
+        <p>&copy; 2024 MySelf.PICS. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

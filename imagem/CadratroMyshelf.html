@@ -1,0 +1,182 @@
+
+<!-- saved from url=(0116)file:///C:/Users/Vinicius/Desktop/Geral/3_Semestre/PW2/PHP/USBWebserver/root/semestre_3/trab_fatos/for_cadastro.html -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body class="cdt">');
+  //  print_r('Email: ' . $_POST['email']);
+    //print_r('<br>');
+    //print_r('Senha: ' . $_POST['senha']);
+    //print_r('<br>');
+    //print_r('Tel: ' . $_POST['telefone']);
+    //print_r('<br>');
+    //print_r('Sexo: ' . $_POST['genero']);
+   // print_r('<br>');
+   // print_r('Data de Nascimento: ' . $_POST['data_nasc']);
+   // print_r('<br>');
+   // print_r('Estado: ' . $_POST['estado']);
+   // print_r('<br>');
+   // print_r('Cidade: ' . $_POST['cidade']);
+   // print_r('<br>');
+   // print_r('Endereço: ' . $_POST['endereco']);
+   // print_r('<br>');
+   $message = '';
+   
+   if (isset($_POST['submit'])) { 
+
+    include_once('confg.php'); 
+
+  
+    $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
+    $email = mysqli_real_escape_string($conexao, $_POST['email']);
+    $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+    $tel = mysqli_real_escape_string($conexao, $_POST['telefone']);
+    $sexo = mysqli_real_escape_string($conexao, $_POST['genero']);
+    $data_nasc = mysqli_real_escape_string($conexao, $_POST['data_nasc']);
+    $estado = mysqli_real_escape_string($conexao, $_POST['estado']);
+    $cidade = mysqli_real_escape_string($conexao, $_POST['cidade']);
+    $endereco = mysqli_real_escape_string($conexao, $_POST['endereco']);
+
+ 
+    $resulte = mysqli_query($conexao, "INSERT INTO tab_cad_myself(nome, email, senha, telefone, sexo, data_nasc, estado, cidade, endereco) 
+    VALUES ('$nome', '$email', '$senha', '$tel', '$sexo', '$data_nasc', '$estado', '$cidade', '$endereco')");
+
+ 
+if ($resulte) {
+    $message = "<span style="color: green;">Cadastro realizado com sucesso!</span>";
+} else {
+    $message = "<span style="color: red;">Erro ao realizar o cadastro: " . mysqli_error($conexao) . "</span>";
+}
+}
+
+  
+    
+
+?&gt;
+
+
+
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CadratroMyshelf</title>
+    <link rel="stylesheet" href="./CadratroMyshelf_files/estilo.css">
+    <link href="./CadratroMyshelf_files/bootstrap.min.css" rel="stylesheet">
+
+
+
+
+
+
+    <a href="file:///C:/Users/Vinicius/Desktop/Geral/3_Semestre/PW2/PHP/USBWebserver/root/semestre_3/trab_fatos/pg_abertura.html"><button id="bt1" class="btn btn-primary mb-2">volta</button></a>
+
+    <div id="img01" class="text-center mb-4">
+        <img src="./CadratroMyshelf_files/lentecmr.png" alt="" class="img-fluid">
+    </div><br>
+
+    <div class=" col-12 col-md-8 offset-md-2">
+        
+        <form action="file:///C:/Users/Vinicius/Desktop/Geral/3_Semestre/PW2/PHP/USBWebserver/root/semestre_3/trab_fatos/for_cadastro.php" method="POST">
+            <fieldset class=" cx border p-4">
+
+                <legend class="w-auto"><b>Cadastro.</b></legend><br>
+                
+                <div class="inpt form-group">
+                    <input type="text" name="nome" id="nome" class="iptu form-control">
+                    <label for="nome" class="mani">Nome Completo.</label>
+                </div>                
+
+                <div class="inpt form-group">
+                    <input type="email" name="email" id="email" class="iptu form-control">
+                    <label for="email" class="mani">Email.</label>
+                </div>
+
+                <div class="inpt form-group">
+                    <input type="password" name="senha" id="senha" class="iptu form-control">
+                    <label for="senha" class="mani">Senha.</label>
+                </div>
+              
+
+                <div class="inpt form-group">
+                    <input type="tel" name="telefone" id="telefone" class="iptu form-control">
+                    <label for="telefone" class="mani">Telefone.</label>
+                </div><br>
+
+                <p style="color: white;">Sexo.</p>
+
+                   <div class="form-check">
+                            <input type="radio" id="feminino" name="genero" value="feminino" class="form-check-input">
+                            <label for="feminino" class="form-check-label">Feminino.</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="masculino" name="genero" value="masculino" class="form-check-input">
+                            <label for="masculino" class="form-check-label">Masculino.</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="outros" name="genero" value="outros" class="form-check-input">
+                            <label for="outros" class="form-check-label">Todesss.</label>
+                        </div><br>
+                        <div class="inpt form-group">
+                            <strong>Data de Nascimento.</strong>
+                            <label for="dnas" class="mani"></label>
+                            <input type="date" name="data_nasc" id="dnas" class="iptu form-control">
+                        </div><br>
+
+                        <label for="estado">Selecione seu estado:</label><br>
+                        <select name="estado" id="estado" class="form-control">
+
+        
+                    <option value="?">....</option>
+                    <option value="AC">AC - Acre</option>
+                    <option value="AL">AL - Alagoas</option>
+                    <option value="AP">AP - Amapá</option>
+                    <option value="AM">AM - Amazonas</option>
+                    <option value="BA">BA - Bahia</option>
+                    <option value="CE">CE - Ceará</option>
+                    <option value="DF">DF - Distrito Federal</option>
+                    <option value="ES">ES - Espírito Santo</option>
+                    <option value="GO">GO - Goiás</option>
+                    <option value="MA">MA - Maranhão</option>
+                    <option value="MT">MT - Mato Grosso</option>
+                    <option value="MS">MS - Mato Grosso do Sul</option>
+                    <option value="MG">MG - Minas Gerais</option>
+                    <option value="PA">PA - Pará</option>
+                    <option value="PB">PB - Paraíba</option>
+                    <option value="PR">PR - Paraná</option>
+                    <option value="PE">PE - Pernambuco</option>
+                    <option value="PI">PI - Piauí</option>
+                    <option value="RJ">RJ - Rio de Janeiro</option>
+                    <option value="RN">RN - Rio Grande do Norte</option>
+                    <option value="RS">RS - Rio Grande do Sul</option>
+                    <option value="RO">RO - Rondônia</option>
+                    <option value="RR">RR - Roraima</option>
+                    <option value="SC">SC - Santa Catarina</option>
+                    <option value="SP">SP - São Paulo</option>
+                    <option value="SE">SE - Sergipe</option>
+                    <option value="TO">TO - Tocantins</option>
+                </select><br><br>
+
+
+                <div class="inpt form-group">
+                    <strong>Cidade.</strong>
+                    <label for="cidade" class="mani"></label>
+                    <input type="text" name="cidade" id="cidade" class="iptu form-control">
+                </div><br>
+
+                <div class="inpt form-group">
+                    <strong>Endereço com Numero.</strong>
+                    <label for="endereco" class="mani"></label>
+                    <input type="text" name="endereco" id="endereco" class="iptu form-control" placeholder="Av. Abcd, 88">
+                </div><br>
+
+                <input type="submit" name="submit" id="submit" class="btn btn-success btn-block">
+            </fieldset>
+
+        </form>
+
+    </div>
+   <!-- Contêiner para exibir a mensagem -->
+   <div id="messageContainer">
+        <!--?php echo ($message); ?-->
+    </div>
+
+
+</body></html>

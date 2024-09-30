@@ -1,0 +1,324 @@
+h1 {
+    position: fixed;
+    background: linear-gradient(to right, red, orange, rgba(220, 220, 39, 0.723), green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    z-index: 2;
+}
+
+.up {
+
+    background-image: linear-gradient(45deg, cyan, yellow);
+}
+.cdt {
+
+    background-image: linear-gradient(45deg, black, cyan);
+}
+
+.tlogin {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 80px;
+    border-radius: 15px;
+    color: white;
+}
+
+#img1 {
+    position: absolute;
+    top: 29%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#tlogin {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+input {
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-style: 15px;
+}
+
+#bt1 {
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 2%;
+    background-color: rgb(120, 30, 255);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+
+
+}
+
+#bt1:hover {
+    background-color: darkblue;
+}
+
+#enter {
+    background-color: rgb(120, 30, 255);
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+
+}
+
+#cadastro:hover {
+    color: red;
+
+}
+#cadastro {
+    background-color: transparent;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+
+}
+
+#enter:hover {
+    background-color: darkblue;
+
+}
+
+#cdt {
+    position: fixed;
+    right: 30%;
+    border: none;
+    border-radius: 15%;
+}
+
+#cdt:hover {
+    background-color: rgb(232, 9, 9);
+}
+#cdt1 {
+    position: fixed;
+    background: transparent;
+    right: 30%;
+    border: none;
+    border-radius: 15%;
+    font-size: 2vw;
+}
+
+#cdt1:hover {
+    background-color: rgb(232, 9, 9);
+}
+
+
+/*pagina cadastro*/
+
+
+
+
+#img01 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.cx {
+    position: absolute;
+   background-color: rgb(10, 186, 186);
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 20px;
+        width: 50%;               /* Define a largura do formulário (pode ajustar conforme desejar) */
+        margin-left: auto;         /* Centraliza o formulário horizontalmente */
+        margin-right: auto;        /* Centraliza o formulário horizontalmente */
+        border: 1px solid #ccc;    /* Borda ao redor do formulário */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 3); /* Sombra suave */
+   
+    
+}
+
+fieldset {
+ 
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ 
+    width: 50%;               /* Define a largura do formulário (pode ajustar conforme desejar) */
+    margin-left: auto;         /* Centraliza o formulário horizontalmente */
+    margin-right: auto;    
+ 
+}
+
+legend {
+    border: 1px solid dodgerblue;
+    padding: 10px;
+    background-color: dodgerblue;
+    border-radius: 8px;
+    color: aliceblue;
+    font-size: 200%;
+}
+
+.inpt {
+    position: relative;
+}
+
+.iptu {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 70%;
+    letter-spacing: 2px;
+}
+
+label {
+    
+}
+
+#numero {
+    position: absolute;
+    width: 20%;
+    left: 50%;
+}
+
+#submit {
+    background-color: dodgerblue;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+
+}
+
+.mani {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    transition: .5s;
+    
+}
+
+.iptu:focus~.mani {
+    top: -20px;
+    font-size: 12px;
+    color: red;
+}
+
+/*pagina abertura*/
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.cab {
+    background-image: linear-gradient(45deg, cyan,yellow);
+}
+
+.logo-container,
+.buttons-container {
+    margin-bottom: 10px;
+}
+
+#ms {
+    font-size: 7vw;
+    letter-spacing: 4px;
+    top: 1%;
+}
+
+#h1ab {
+
+    color: black;
+    font-size: 4vw;
+
+}
+
+#fonte {
+    color: black;
+    font-size: 1.5vw;
+    margin: 1;
+    padding:1;
+
+}
+
+#Bem-vindo {
+    position: absolute;
+    left: 10px;
+
+}
+
+#carousel {
+    position: absolute;
+    right: 2%;
+}
+
+#carousel {
+    width: 450px;
+    height: auto;
+}
+.buttons-container {
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+}
+
+.btn2 {
+    position: relative;
+    background-color: rgb(120, 30, 255);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px; 
+    
+}
+
+.btn2:hover {
+    background-color: darkblue;
+}
+#roda{
+    position: absolute;
+    color: aliceblue;
+    bottom: 0;
+    right: 7%;
+    font-size: 1vw;
+}
+#cdt1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   bottom: 0;
+
+
+}
